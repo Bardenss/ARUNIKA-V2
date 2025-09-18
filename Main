@@ -42,12 +42,12 @@ end
 
 -- daftar link raw route (ubah ke link punyamu)
 routes = {
-    {"BASE → CP1", loadRoute("https://raw.githubusercontent.com/Bardenss/Arunika/refs/heads/main/01.lua")},
-    {"CP1 → CP2", loadRoute("https://raw.githubusercontent.com/Bardenss/Arunika/refs/heads/main/12.lua")},
-    {"CP2 → CP3", loadRoute("https://raw.githubusercontent.com/Bardenss/Arunika/refs/heads/main/23.lua")},
-    {"CP3 → CP4", loadRoute("https://raw.githubusercontent.com/Bardenss/Arunika/refs/heads/main/34.lua")},
-    {"CP4 → CP5", loadRoute("https://raw.githubusercontent.com/Bardenss/Arunika/refs/heads/main/45.lua")},
-    {"CP5 → SUMMIT", loadRoute("https://raw.githubusercontent.com/Bardenss/Arunika/refs/heads/main/56.lua")},
+    {"BASE → CP1", loadRoute("https://raw.githubusercontent.com/Bardenss/ARUNIKA-V2/refs/heads/main/01.lua")},
+    {"CP1 → CP2", loadRoute("https://raw.githubusercontent.com/Bardenss/ARUNIKA-V2/refs/heads/main/12.lua")},
+    {"CP2 → CP3", loadRoute("https://raw.githubusercontent.com/Bardenss/ARUNIKA-V2/refs/heads/main/23.lua")},
+    {"CP3 → CP4", loadRoute("https://raw.githubusercontent.com/Bardenss/ARUNIKA-V2/refs/heads/main/34.lua")},
+    {"CP4 → CP5", loadRoute("https://raw.githubusercontent.com/Bardenss/ARUNIKA-V2/refs/heads/main/45.lua")},
+    {"CP5 → SUMMIT", loadRoute("https://raw.githubusercontent.com/Bardenss/ARUNIKA-V2/refs/heads/main/56.lua")},
 }
 
 -- ============================================================

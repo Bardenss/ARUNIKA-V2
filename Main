@@ -28,16 +28,27 @@ local routes = {}
 -- ============================================================
 -- ROUTE EXAMPLE (isi CFrame)
 -- ============================================================
-local function loadRoute(url)
-    local ok, result = pcall(function()
-        return loadstring(game:HttpGet(url))()
-    end)
-    if ok and type(result) == "table" then
-        return result
-    else
-        warn("Gagal load route dari: "..url)
-        return {}
+-- Tinggi default waktu record
+local DEFAULT_HEIGHT = 1.859999418258667
+
+-- Ambil tinggi avatar sekarang
+local function getCurrentHeight()
+    local char = player.Character or player.CharacterAdded:Wait()
+    local humanoid = char:WaitForChild("Humanoid")
+    return humanoid.HipHeight + (char:FindFirstChild("Head") and char.Head.Size.Y or 2)
+end
+
+-- Adjustment posisi sesuai tinggi avatar
+local function adjustRoute(frames)
+    local adjusted = {}
+    local currentHeight = getCurrentHeight()
+    local offsetY = (currentHeight - DEFAULT_HEIGHT) * 0.5 -- <<< dikali 0.9
+    for _,cf in ipairs(frames) do
+        local pos, rot = cf.Position, cf - cf.Position
+        local newPos = Vector3.new(pos.X, pos.Y + offsetY, pos.Z)
+        table.insert(adjusted, CFrame.new(newPos) * rot)
     end
+    return adjusted
 end
 
 -- daftar link raw route (ubah ke link punyamu)
@@ -199,10 +210,13 @@ local function runAllRoutes()
     end
     setBypass(false)
     isRunning = false
-    -- loop otomatis
-    respawnPlayer()
-    task.wait(3)
-    runAllRoutes()
+
+    -- loop otomatis, hanya kalau masih running
+    if isRunning then
+        respawnPlayer()
+        task.wait(3)
+        runAllRoutes()
+    end
 end
 
 local function stopRoute()

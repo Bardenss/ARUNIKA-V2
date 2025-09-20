@@ -51,6 +51,22 @@ local function adjustRoute(frames)
     return adjusted
 end
 
+-- ============================================================
+-- ROUTE EXAMPLE (isi CFrame)
+-- ============================================================
+local function loadRoute(url)
+    local ok, result = pcall(function()
+        return loadstring(game:HttpGet(url))()
+    end)
+    if ok and type(result) == "table" then
+        -- auto adjust langsung disini
+        return adjustRoute(result)
+    else
+        warn("Gagal load route dari: "..url)
+        return {}
+    end
+end
+
 -- daftar link raw route (ubah ke link punyamu)
 routes = {
     {"BASE → CP1", loadRoute("https://raw.githubusercontent.com/Bardenss/ARUNIKA-V2/refs/heads/main/01.lua")},

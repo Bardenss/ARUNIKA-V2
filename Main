@@ -42,7 +42,7 @@ end
 local function adjustRoute(frames)
     local adjusted = {}
     local currentHeight = getCurrentHeight()
-    local offsetY = (currentHeight - DEFAULT_HEIGHT) * 0.5 -- <<< dikali 0.9
+    local offsetY = (currentHeight - DEFAULT_HEIGHT) * 0.7 -- <<< dikali 0.9
     for _,cf in ipairs(frames) do
         local pos, rot = cf.Position, cf - cf.Position
         local newPos = Vector3.new(pos.X, pos.Y + offsetY, pos.Z)

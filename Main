@@ -207,7 +207,7 @@ local function runRouteOnce()
     setBypass(false) -- otomatis OFF
 end
 
-local function runAllRoutesLoop()
+local function runAllRoutes()
     if #routes == 0 then return end
     isRunning = true
 
@@ -379,7 +379,7 @@ local InfoTab = Window:Tab({
 -- Main Tab (Dropdown speed mulai dari 0.25x)
 -- ============================================================
 local speeds = {}
-for v = 0.25, 10, 0.25 do
+for v = 0.25, 100, 0.25 do
     table.insert(speeds, string.format("%.2fx", v))
 end
 MainTab:Dropdown({

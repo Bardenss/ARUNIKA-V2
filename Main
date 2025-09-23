@@ -29,7 +29,7 @@ local routes = {}
 -- ROUTE EXAMPLE (isi CFrame)
 -- ============================================================
 -- Tinggi default waktu record
-local DEFAULT_HEIGHT = 1.859999418258667
+local DEFAULT_HEIGHT = 2.900038719177246
 
 -- Ambil tinggi avatar sekarang
 local function getCurrentHeight()
@@ -42,8 +42,8 @@ end
 local function adjustRoute(frames)
     local adjusted = {}
     local currentHeight = getCurrentHeight()
-    local offsetY = (currentHeight - DEFAULT_HEIGHT) * 0.5 -- <<< dikali 0.9
-    for _,cf in ipairs(frames) do
+    local offsetY = currentHeight - DEFAULT_HEIGHT  -- full offset
+    for _, cf in ipairs(frames) do
         local pos, rot = cf.Position, cf - cf.Position
         local newPos = Vector3.new(pos.X, pos.Y + offsetY, pos.Z)
         table.insert(adjusted, CFrame.new(newPos) * rot)
@@ -214,6 +214,7 @@ local function runAllRoutes()
     while isRunning do
         if not hrp then refreshHRP() end
         setBypass(true)
+
         local idx = getNearestRoute()
         logAndNotify("Sesuaikan dari cp : ", routes[idx][1])
 
@@ -230,7 +231,8 @@ local function runAllRoutes()
 
         setBypass(false)
 
-        -- respawn + delay 5 detik sebelum ulang
+        -- Respawn + delay 5 detik HANYA jika masih running
+        if not isRunning then break end
         respawnPlayer()
         task.wait(5)
     end

@@ -111,7 +111,7 @@ end
 
 -- daftar link raw route (ubah ke link punyamu)
 routes = {
-    {"BASE → SUMMIT", loadRoute("https://raw.githubusercontent.com/Bardenss/YAHAYUK/refs/heads/main/All.lua")},
+    {"BASE → SUMMIT", loadRoute("https://raw.githubusercontent.com/Bardenss/ARUNIKA-V2/refs/heads/main/33.lua")},
 }
 
 -- ============================================================

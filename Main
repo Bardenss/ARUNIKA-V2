@@ -204,8 +204,17 @@ local function setupBypass(char)
         if bypassActive then
             local direction = (hrp.Position - lastPos)
             local dist = direction.Magnitude
+
+            -- Deteksi perbedaan ketinggian (Y)
+            local yDiff = hrp.Position.Y - lastPos.Y
+            if yDiff > 0.5 then
+                humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+            elseif yDiff < -1 then
+                humanoid:ChangeState(Enum.HumanoidStateType.Freefall)
+            end
+
             if dist > 0.01 then
-                local moveVector = direction.Unit * math.clamp(dist*5, 0, 1)
+                local moveVector = direction.Unit * math.clamp(dist * 5, 0, 1)
                 humanoid:Move(moveVector, false)
             else
                 humanoid:Move(Vector3.zero, false)
